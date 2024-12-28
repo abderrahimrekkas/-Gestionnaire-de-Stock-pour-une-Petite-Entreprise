@@ -30,3 +30,8 @@ route.post('/Task',async (req,res)=>{
     console.log(err)
 }
 })
+// Route bach tmsah la tache b id
+route.delete('/delet/:id',async(req,res) => {
+    await   Task.findByIdAndDelete(req.params.id)
+    res.send("supprimer  avec succes")
+   })
