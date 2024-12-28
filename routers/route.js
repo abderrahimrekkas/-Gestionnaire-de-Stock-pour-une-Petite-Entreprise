@@ -35,3 +35,19 @@ route.delete('/delet/:id',async(req,res) => {
     await   Task.findByIdAndDelete(req.params.id)
     res.send("supprimer  avec succes")
    })
+// Route bach tmodiffier la tache
+   route.put('/update/:idup', async (req, res) => {
+    try {
+        await Task.findOneAndUpdate(
+            { _id: req.params.idup },
+            {
+                name: req.body.name,
+                description: req.body.description,
+                status: req.body.status,
+            }
+        );
+        res.send("Modifier avec succès");
+    } catch (err) {
+        res.status(500).send(err);
+    }
+});
