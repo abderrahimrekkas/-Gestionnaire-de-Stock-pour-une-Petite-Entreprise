@@ -15,3 +15,18 @@ route.get('/task',async (req,res)=>{
     }
    
 })
+// Route bach tzid wahd la tache jdida
+route.post('/Task',async (req,res)=>{
+    try{
+        const{name,description,statu}=req.body;
+    let new_Task = new Task({
+        name:req.body.name,
+        description:req.body.description,
+        status:req.body.status
+    })
+    await new_Task.save()// tsjal liya la tache jdida f la base de donnes
+    res.send('ajoutter avec succes')
+}catch(err){
+    console.log(err)
+}
+})
